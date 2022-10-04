@@ -89,6 +89,8 @@ const Register = () => {
   };
 
   return (
+
+    // Hello 
     <div style={{
       background: "linear-gradient(to bottom, #33ccff 0%, #ff9999 100%)",
       //backgroundColor: '#99FFFF',
