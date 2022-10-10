@@ -2,7 +2,8 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import axios from "axios";
-import swal from "sweetalert"
+import swal from "sweetalert";
+import { useEffect } from "react";
 
 import { useNavigate } from "react-router-dom";
 
@@ -21,6 +22,17 @@ const Register = () => {
     setInputs((values) => ({ ...values, [paramName]: paramValue }));
   };
 
+  useEffect(() => {
+
+    let adminvalidate = sessionStorage.getItem("adminUser");
+    if(adminvalidate==null)
+    {
+      navigate("/Login");
+    }
+
+   
+
+ }, []);
 
   const checkEmail = (data) => {
 
@@ -42,13 +54,38 @@ const Register = () => {
   let validate = (evnt) => {
     evnt.preventDefault();
     var regEx = /^[a-zA-Z\s]+$/;
+    const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})");
     var pattern = /^[6-9]\d{9}$/gi;
 
-    if (inputs.name === "") {
+    // if (inputs.name == undefined) {
 
-      swal("Error", "Please enter the name", "error");
+    //   swal("Error", "Please enter the name", "error");
+    //   return false;
+    // }
+    var format = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
+
+    if (!isNaN(inputs.name )) {
+      swal("Error", "Please Enter Char Onlyl in Name", "error");
       return false;
-    }
+    } else if( inputs.name.match(format) ){
+      swal("Error", "special characters Not allowded  in  Name", "error");
+      return false;
+    }else if( /\s/g.test(inputs.name) ){
+      swal("Error", "White space  Not allowed in Name", "error");
+      return false;
+  }
+
+  if (!isNaN(inputs.city)) {
+    swal("Error", "Please Enter Char Onlyl in City Name", "error");
+    return false;
+  } else if( inputs.city.match(format) ){
+    swal("Error", "special characters Not allowded  in City Name", "error");
+    return false;
+  }else if( /\s/g.test(inputs.city) ){
+    swal("Error", "White space  Not allowed in City Name", "error");
+    return false;
+}
+    
 
 
 
@@ -75,13 +112,20 @@ const Register = () => {
     ) {
       swal("Error", "Please enter valid email", "error");
       return false;
-    } else if (inputs.password === "") {
-      swal("Error", "Please enter password", "error");
+    } 
+    //else if (inputs.password === "") {
+    //   swal("Error", "Please enter password", "error");
+    //   return false;
+    // } else if (inputs.password.length <= 5) {
+    //   swal("Error", "Password must be atleast 6 character", "error");
+    //   return false;
+    // } 
+    else if (!strongRegex.test(inputs.password)){
+      swal("Error", "password should contain : (at least one capital letter, one numeric value and one special character, min length : 6 )", "error");
       return false;
-    } else if (inputs.password.length <= 5) {
-      swal("Error", "Password must be atleast 6 character", "error");
-      return false;
-    } else if (uconpassword !== inputs.password) {
+
+    } 
+    else if (uconpassword !== inputs.password) {
       swal("Error", "Please confirm password", "error");
       return false;
     }
@@ -89,8 +133,6 @@ const Register = () => {
   };
 
   return (
-
-    // Hello 
     <div style={{
       background: "linear-gradient(to bottom, #33ccff 0%, #ff9999 100%)",
       //backgroundColor: '#99FFFF',

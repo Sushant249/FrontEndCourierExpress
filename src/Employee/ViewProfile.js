@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ViewProfile() {
-
+  const navigate = useNavigate();
   const [empData, setempData] = useState([]);
 
-  let useremail = sessionStorage.getItem("user");
+  let useremail = sessionStorage.getItem("EmployeeUser");
 
   const viewSelf = () => {
     axios.get(`http://localhost:8080/findEmp/${useremail}`)
@@ -21,7 +22,11 @@ function ViewProfile() {
 
 
   useEffect(() => {
-
+    let adminvalidate = sessionStorage.getItem("EmployeeUser");
+      if(adminvalidate==null)
+      {
+        navigate("/Login");
+      }
     viewSelf();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -50,6 +55,7 @@ function ViewProfile() {
             <th>City</th>
             <th>Address</th>
             <th>Email</th>
+            {/* <th>Password</th> */}
 
             {/* <th>Role</th> */}
             <th>Update</th>
@@ -60,12 +66,13 @@ function ViewProfile() {
           {
             empData.map(
               usr => <tr key="{usr.uid}"  >
-                <td>{usr.uid}</td>
-                <td>{usr.name}</td>
-                <td>{usr.mobileNo}</td>
-                <td>{usr.city}</td>
-                <td>{usr.address}</td>
-                <td>{usr.email}</td>
+                 <td >{usr.uid}</td>
+                <td >{usr.name}</td>
+                <td >{usr.mobileNo}</td>
+                <td >{usr.city}</td>
+                <td >{usr.address}</td>
+                <td >{usr.email}</td>
+                {/* <td >{usr.password}</td> */}
 
 
                 {/* <td>{val.role}</td> */}

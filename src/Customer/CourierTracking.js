@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert"
-
+import { Navigate, redirect, useNavigate } from "react-router-dom";
 const CourierTracking = () => {
-
+  const navigate = useNavigate();
 
   const [inputs, setInputs] = useState({});
   const [object, setObject] = useState({});
@@ -13,8 +13,6 @@ const CourierTracking = () => {
     let paramValue = evnt.target.value;
     setInputs((values) => ({ ...values, [paramName]: paramValue }));
   };
-
-
   const handleSubmit = (evnt) => {
     evnt.preventDefault();
     alert(JSON.stringify(inputs));
@@ -36,6 +34,17 @@ const CourierTracking = () => {
         alert(error);
       });
   };
+
+
+  useEffect(() => {
+    let adminvalidate = sessionStorage.getItem("customerEmail");
+    if(adminvalidate==null)
+    {
+      navigate("/");
+    }
+   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
 
   return <>
@@ -96,7 +105,7 @@ const CourierTracking = () => {
             <p>Receiver Name : {object.receiverName}</p>
             <p>Receiver Mobile : {object.receiverMobNo}</p>
             <p>Receiver Address : {object.receiverAddress}</p>
-            <p><strong>Courier Status : </strong>{object.randomstatus}</p>
+            <p>Courier Status : {object.randomstatus}</p>
           </div>
         </div>
 

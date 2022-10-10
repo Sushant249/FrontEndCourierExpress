@@ -3,13 +3,31 @@
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../HomePage/Footer";
 import CustomerHome from "./CustomerHome";
-function CustomerLayout() {
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+
+
+function CustomerLayout() {
+  const navigate = useNavigate();
   const sessionClose = () => {
 
-    sessionStorage.setItem("user", "");
+    sessionStorage.setItem("customerEmail", "");
 
   };
+
+  useEffect(() => {
+
+    let adminvalidate = sessionStorage.getItem("customerEmail");
+    if(adminvalidate=="")
+    {
+      navigate("/CustomerLogin");
+    }
+
+    
+
+ }, []);
+
   return (
     <>
 
@@ -35,7 +53,9 @@ function CustomerLayout() {
               <li class="nav-item mt-2 ms-5">
                 <Link class="nav-link" to="/Customer/UpdateBookingDetails" >Update</Link>
               </li>
-
+              {/* <li class="nav-item mt-2 ms-5" >
+                <Link class="nav-link" to="/Customer/CustomerFeedback" >Feedback</Link>
+              </li> */}
               <li class="nav-item mt-1 ms-5">
                 <Link to="/">
 
@@ -51,7 +71,8 @@ function CustomerLayout() {
 
 
       <Outlet />
-
+      {/* <CustomerHome />
+      <Footer /> */}
       <Footer />
 
     </>

@@ -1,14 +1,14 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 function DboyCouriers() {
 
 
+    const navigate = useNavigate();
 
-
-    let useremail = sessionStorage.getItem("user");
+    let useremail = sessionStorage.getItem("dboyUser");
 
 
 
@@ -27,7 +27,11 @@ function DboyCouriers() {
 
 
     useEffect(() => {
-
+        let adminvalidate = sessionStorage.getItem("dboyUser");
+        if(adminvalidate==null)
+        {
+          navigate("/Login");
+        }
         viewCouriers();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
@@ -41,8 +45,8 @@ function DboyCouriers() {
         <div class="container ">
             <h2>Couriers Information</h2>
 
-            <table class="table table-striped text-white">
-                <thead>
+            <table class="table table-striped ">
+                <thead className="text-white">
                     <tr>
                         <th>Id</th>
                         <th>Booking date</th>
@@ -76,12 +80,12 @@ function DboyCouriers() {
                                 <td className="text-white">{cour.fromCity}</td>
                                 <td className="text-white">{cour.toCity}</td>
                                 <td className="text-white">{cour.randomstatus}</td>
-
+                                {/* <td>{cour.deliveryBoy}</td> */}
 
                                 <td><Link to="/Dboy/DboyStatusUpdate" state={cour} class="btn btn-primary" >Update</Link> </td>
 
 
-
+                                {/* <td><button type="button" id={val.uid} value={val.uid} onClick={userDelete} >X</button> </td> */}
                             </tr>
                         )
                     }

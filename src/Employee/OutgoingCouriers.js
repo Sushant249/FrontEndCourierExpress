@@ -1,15 +1,15 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 
 
 function OutgoingCouriers() {
 
+    const navigate = useNavigate();
 
 
-
-    let useremail = sessionStorage.getItem("user");
+    let useremail = sessionStorage.getItem("EmployeeUser");
 
 
 
@@ -28,6 +28,14 @@ function OutgoingCouriers() {
 
 
     useEffect(() => {
+
+        let adminvalidate = sessionStorage.getItem("EmployeeUser");
+        
+        if(adminvalidate==null)
+        {
+            console.log("nav");
+          navigate("/Login");
+        }
 
         viewCouriersFromCity();
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -70,21 +78,22 @@ function OutgoingCouriers() {
                     {
                         responseData.map(
                             cour => <tr key="{cour.bid}"  >
-                                <td>{cour.bid}</td>
-                                <td>{cour.bookingDate}</td>
-                                <td>{cour.courierType}</td>
-                                <td>{cour.weight}</td>
-                                <td>{cour.modeOfTransport}</td>
-                                <td>{cour.receiverName}</td>
-                                <td>{cour.receiverMobNo}</td>
-                                <td>{cour.receiverAddress}</td>
-                                <td>{cour.fromCity}</td>
-                                <td>{cour.toCity}</td>
-                                <td>{cour.randomstatus}</td>
-                                <td>{cour.deliveryBoy}</td>
-
+                                <td class="font-weight-bold">{cour.bid}</td>
+                                <td class="font-weight-bold">{cour.bookingDate}</td>
+                                <td class="font-weight-bold">{cour.courierType}</td>
+                                <td class="font-weight-bold">{cour.weight}</td>
+                                <td class="font-weight-bold">{cour.modeOfTransport}</td>
+                                <td class="font-weight-bold">{cour.receiverName}</td>
+                                <td class="font-weight-bold">{cour.receiverMobNo}</td>
+                                <td class="font-weight-bold">{cour.receiverAddress}</td>
+                                <td class="font-weight-bold">{cour.fromCity}</td>
+                                <td class="font-weight-bold">{cour.toCity}</td>
+                                <td class="font-weight-bold">{cour.randomstatus}</td>
+                                <td class="font-weight-bold">{cour.deliveryBoy}</td>
                                 <td><Link to="/Employee/update" state={cour} class="btn btn-primary" >Update</Link> </td>
 
+
+                                {/* <td><button type="button" id={val.uid} value={val.uid} onClick={userDelete} >X</button> </td> */}
                             </tr>
                         )
                     }

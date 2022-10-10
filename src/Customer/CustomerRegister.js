@@ -1,6 +1,6 @@
 
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert";
 import { Navigate, redirect, useNavigate } from "react-router-dom";
@@ -35,6 +35,18 @@ const CustomerRegister = () => {
         alert(error);
       });
   };
+
+  useEffect(() => {
+        let adminvalidate = sessionStorage.getItem("customerEmail");
+        if(adminvalidate==null)
+        {
+          navigate("/");
+        }
+       
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
+
+
 
   let validate = (evnt) => {
     evnt.preventDefault();
@@ -204,7 +216,7 @@ const CustomerRegister = () => {
               </div>
               <div className="col-md-6 pe-3">
                 <input
-                  type="password"
+                  type="text"
 
                   id="conpassword"
                   name="conpassword"

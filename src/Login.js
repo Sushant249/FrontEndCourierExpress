@@ -10,9 +10,18 @@ function Login() {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    document.title = "Login";
-  }, []);
+
+    useEffect(() => {
+
+      sessionStorage.setItem("EmployeeUser", "");
+      sessionStorage.setItem("adminUser", "");
+      sessionStorage.setItem("customerEmail", "");
+      sessionStorage.setItem("dboyUser", "");
+      document.title = "Login";
+     }, []);
+
+    
+ 
 
   let [uemail, setUemail] = useState("");
   let [upassword, setUpassword] = useState("");
@@ -35,17 +44,17 @@ function Login() {
       (response) => {
         console.log(response.data);
         if (response.data.role === "admin") {
-          sessionStorage.setItem("user", user.email);
+          sessionStorage.setItem("adminUser", user.email);
           sessionStorage.setItem("admin", response.data.name);
           navigate("/Admin");
         }
-        else if (response.data.role == "emp") {
-          sessionStorage.setItem("user", user.email);
+        else if (response.data.role === "emp") {
+          sessionStorage.setItem("EmployeeUser", user.email);
           sessionStorage.setItem("emp", response.data.name);
           navigate("/Employee");
         }
-        else if (response.data.role == "dby") {
-          sessionStorage.setItem("user", user.email);
+        else if (response.data.role === "dby") {
+          sessionStorage.setItem("dboyUser", user.email);
           sessionStorage.setItem("dby", response.data.name);
           navigate("/Dboy");
         }
@@ -61,7 +70,6 @@ function Login() {
       }
     );
   };
-
 
 
 
@@ -99,9 +107,40 @@ function Login() {
     <div className="bg-light mw-100 " style={{
       backgroundColor: '#E1E8ED',
       height: "100%",
+      // backgroundImage: `url("piccc1.jpg")`,
+      // backgroundPosition: 'center',
+      // backgroundSize: 'cover',
+      // backgroundRepeat: 'no-repeat',
       width: '100vw',
       height: '100vh'
     }}>
+      <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid ms-5">
+          <a class="navbar-brand" href="#">Welcome </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+
+            <ul class="navbar-nav">
+
+             
+              <li class="nav-item mt-2 ms-5">
+                <Link class="nav-link btn btn-secondary" to="/" >Home</Link>
+              </li>
+
+              {/* <li class="nav-item mt-1 ms-5">
+                <Link to="/">
+
+                  <button type="button" class=" btn btn-danger btn-sm" onClick={sessionClose}>Logout</button></Link>
+              </li> */}
+            </ul>
+
+          </div>
+        </div>
+      </nav>
+
 
 
       <h1 className="display-5"><b>User Login</b></h1>

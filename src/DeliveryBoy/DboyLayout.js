@@ -1,14 +1,28 @@
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../HomePage/Footer";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 function DboyLayout() {
-
+  const navigate = useNavigate();
   const sessionClose = () => {
 
-    sessionStorage.setItem("user", "");
+    sessionStorage.setItem("dboyUser", "");
 
   };
+
+  useEffect(() => {
+
+    let adminvalidate = sessionStorage.getItem("dboyUser");
+    if(adminvalidate=="")
+    {
+      navigate("/Login");
+    }
+
+    
+
+ }, []);
 
 
 
@@ -25,8 +39,7 @@ function DboyLayout() {
 
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid">
-          <a class="navbar-brand text-white ms-5" href="#">Welcome {sessionStorage.getItem("dby")}
-          </a>
+          <a class="navbar-brand text-white ms-5" href="#">Welcome {sessionStorage.getItem("dby")}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>

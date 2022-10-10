@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function DboyProfile() {
-
+  const navigate = useNavigate();
   const [dboyData, setdboyData] = useState([]);
 
-  let useremail = sessionStorage.getItem("user");
+  let useremail = sessionStorage.getItem("dboyUser");
 
   const viewDby = () => {
     axios.get(`http://localhost:8080/findEmp/${useremail}`)
@@ -21,7 +22,11 @@ function DboyProfile() {
 
 
   useEffect(() => {
-
+    let adminvalidate = sessionStorage.getItem("dboyUser");
+    if(adminvalidate==null)
+    {
+      navigate("/Login");
+    }
     viewDby();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -45,7 +50,7 @@ function DboyProfile() {
             <th>City</th>
             <th>Address</th>
             <th>Email</th>
-            <th>Password</th>
+            {/* <th>Password</th> */}
 
             {/* <th>Role</th> */}
             <th>Update</th>
@@ -62,7 +67,7 @@ function DboyProfile() {
                 <td className="text-white">{usr.city}</td>
                 <td className="text-white">{usr.address}</td>
                 <td className="text-white">{usr.email}</td>
-                <td className="text-white">{usr.password}</td>
+                {/* <td className="text-white">{usr.password}</td> */}
 
                 {/* <td>{val.role}</td> */}
                 <td><Link to="/Dboy/DboyUpdateProfile" state={usr} class="btn btn-primary" >Update</Link> </td>

@@ -1,24 +1,35 @@
 import { Link, Outlet } from "react-router-dom";
 import Footer from "../HomePage/Footer";
-
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AdminLayout() {
-
+  const navigate = useNavigate();
 
   const sessionClose = () => {
 
-    sessionStorage.setItem("user", "");
+    sessionStorage.setItem("adminUser", "");
 
   };
 
+  useEffect(() => {
+
+    let adminvalidate = sessionStorage.getItem("adminUser");
+    if(adminvalidate=="")
+    {
+      navigate("/Login");
+    }
+
+    
+
+ }, []);
 
   return (
     <>
 
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container-fluid ms-5">
-          <a class="navbar-brand" href="#">Welcome {sessionStorage.getItem("admin")}
-          </a>
+          <a class="navbar-brand" href="#">Welcome {sessionStorage.getItem("admin")}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>

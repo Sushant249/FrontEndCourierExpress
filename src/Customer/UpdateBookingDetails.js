@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -13,6 +13,15 @@ const UpdateBookingDetails = () => {
 
   const [inputs, setInputs] = useState({});
 
+  useEffect(() => {
+    let adminvalidate = sessionStorage.getItem("customerEmail");
+    if(adminvalidate==null)
+    {
+      navigate("/");
+    }
+   
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
 
 

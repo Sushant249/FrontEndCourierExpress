@@ -1,13 +1,40 @@
 
 import { Link, Outlet } from "react-router-dom";
-function EmployeeLayout() {
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
+function EmployeeLayout() {
+  const navigate = useNavigate();
   const sessionClose = () => {
 
-    sessionStorage.setItem("user", "");
+    sessionStorage.setItem("EmployeeUser", "");
 
   };
 
+
+  useEffect(() => {
+
+    let adminvalidate = sessionStorage.getItem("EmployeeUser");
+    if(adminvalidate=="")
+    {
+      navigate("/Login");
+    }
+
+    
+
+ }, []);
+
+
+  // style={{
+  //   backgroundImage: `url("https://images.pexels.com/photos/6169046/pexels-photo-6169046.jpeg?cs=srgb&dl=pexels-tima-miroshnichenko-6169046.jpg&fm=jpg")`,
+  //   backgroundPosition: 'center',
+  //   backgroundSize: 'cover',
+  //   backgroundRepeat: 'no-repeat',
+  //   width: '100vw',
+  //   height: '100vh'
+
+
+  // }}
 
   return (
     < div className="text-dark">
@@ -15,8 +42,7 @@ function EmployeeLayout() {
       <nav class="navbar navbar-expand-sm bg-dark navbar-dark"
       >
         <div class="container-fluid" >
-          <a class="navbar-brand ms-5" href="/Employee">Welcome {sessionStorage.getItem("emp")}
-          </a>
+          <a class="navbar-brand ms-5" href="/Employee">Welcome {sessionStorage.getItem("emp")}</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
             <span class="navbar-toggler-icon"></span>
           </button>

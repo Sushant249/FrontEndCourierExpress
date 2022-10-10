@@ -1,6 +1,7 @@
 import react from "react"
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
+import { useEffect, useState } from "react";
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import AboutUs from "./AboutUs";
@@ -11,6 +12,18 @@ import VisionMission from "./VisionMission";
 
 
 const Home = () => {
+
+
+useEffect(() => {
+
+    sessionStorage.setItem("EmployeeUser", "");
+    sessionStorage.setItem("adminUser", "");
+    sessionStorage.setItem("customerEmail", "");
+    sessionStorage.setItem("dboyUser", "");
+
+   }, []);
+
+
     return (
         <div className='text-white'>
             <Navbar bg="dark" expand="lg">
@@ -60,8 +73,6 @@ const Home = () => {
             <VisionMission />
             <br /><br />
             <Footer />
-
-
         </div >
     );
 };

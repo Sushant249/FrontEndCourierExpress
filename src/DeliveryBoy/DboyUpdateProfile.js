@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -20,6 +20,17 @@ const DboyUpdateProfile = () => {
     let paramValue = evnt.target.value;
     setInputs((values) => ({ ...values, [paramName]: paramValue }));
   };
+
+  useEffect(() => {
+    let adminvalidate = sessionStorage.getItem("dboyUser");
+    if(adminvalidate==null)
+    {
+      navigate("/Login");
+    }
+ 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
 
   const handleSubmit = (evnt) => {
     evnt.preventDefault();

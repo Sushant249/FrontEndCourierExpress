@@ -3,6 +3,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const UpdateUser = () => {
 
@@ -13,7 +14,17 @@ const UpdateUser = () => {
   const [inputs, setInputs] = useState(userState.state);
 
 
+  useEffect(() => {
 
+    let adminvalidate = sessionStorage.getItem("adminUser");
+    if(adminvalidate==null)
+    {
+      navigate("/Login");
+    }
+
+  
+
+ }, []);
 
   const handleChange = (evnt) => {
     let paramName = evnt.target.name;

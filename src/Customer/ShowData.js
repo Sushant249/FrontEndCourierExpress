@@ -41,7 +41,12 @@ const ShowData = () => {
 
 
   useEffect( ()=>{
-
+    let adminvalidate = sessionStorage.getItem("customerEmail");
+    if(adminvalidate==null)
+    {
+      navigate("/");
+    }
+   
    viewCourier();
 // eslint-disable-next-line react-hooks/exhaustive-deps
  },[]);

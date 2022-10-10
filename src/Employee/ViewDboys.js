@@ -1,11 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ViewDboys() {
 
-   let useremail = sessionStorage.getItem("user");
-
+   let useremail = sessionStorage.getItem("EmployeeUser");
+   const navigate = useNavigate();
    const [responseData, setResponseData] = useState([]);
 
    const viewDboyByCity = () => {
@@ -21,6 +22,11 @@ function ViewDboys() {
 
    useEffect(() => {
 
+      let adminvalidate = sessionStorage.getItem("EmployeeUser");
+      if(adminvalidate==null)
+      {
+        navigate("/Login");
+      }
       viewDboyByCity();
 
    }, []);
@@ -46,18 +52,18 @@ function ViewDboys() {
    }}>
 
       <div class="container">
-         <h2 className="display-6"><strong>Delivery Boys</strong></h2>
+         <h2 className="display-6"><strong><u>Delivery Boys</u></strong></h2>
          <table class="table table-striped">
             <thead>
                <tr>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>MobNo</th>
-                  <th>City</th>
-                  <th>Address</th>
-                  <th>Email</th>
-
-                  <th>Role</th>
+               <th><u>Id</u></th>
+                  <th><u>Name</u></th>
+                  <th><u>MobNo</u></th>
+                  <th><u>City</u></th>
+                  <th><u>Address</u></th>
+                  <th><u>Email</u></th>
+                 
+                  <th><u>Role</u></th>
                   {/* <th>Update</th> */}
                   <th>Delete</th>
                </tr>
@@ -66,14 +72,14 @@ function ViewDboys() {
                {
                   responseData.map(
                      val => <tr key="{val.uid}"  >
-                        <td>{val.uid}</td>
-                        <td>{val.name}</td>
-                        <td>{val.mobileNo}</td>
-                        <td>{val.city}</td>
-                        <td>{val.address}</td>
-                        <td>{val.email}</td>
-
-                        <td>{val.role}</td>
+                       <td class="font-weight-bold">{val.uid}</td>
+                        <td class="font-weight-bold">{val.name}</td>
+                        <td class="font-weight-bold">{val.mobileNo}</td>
+                        <td class="font-weight-bold">{val.city}</td>
+                        <td class="font-weight-bold">{val.address}</td>
+                        <td class="font-weight-bold">{val.email}</td>
+                       
+                        <td class="font-weight-bold">{val.role}</td>
                         {/* <td><Link to="/car/update" state={val} class="btn btn-primary" >Update</Link> </td> */}
 
 

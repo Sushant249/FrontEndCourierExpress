@@ -2,9 +2,11 @@ import axios from "axios";
 
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 
 function ViewUsers() {
-
+   const navigate = useNavigate();
    const [responseData, setResponseData] = useState([]);
 
    const viewUsers = () => {
@@ -13,12 +15,19 @@ function ViewUsers() {
             setResponseData(response.data);
          })
          .catch(error => {
-            alert(error);
+            //alert(error);
          });
    };
 
 
+
+
    useEffect(() => {
+
+      let adminvalidate = sessionStorage.getItem("adminUser");
+      if (adminvalidate == "") {
+         navigate("/Login");
+      }
 
       viewUsers();
 
@@ -52,31 +61,33 @@ function ViewUsers() {
          <h2 className="">User Information</h2>
 
          <table class="table table-striped">
-            <thead>
+            <thead >
                <tr>
-                  <th>Id</th>
-                  <th>Name</th>
-                  <th>MobNo</th>
-                  <th>City</th>
-                  <th>Address</th>
-                  <th>Email</th>
-                  <th>Role</th>
-                  <th>Update</th>
-                  <th>Delete</th>
+                  <th><u>Id</u></th>
+                  <th><u>Name</u></th>
+                  <th><u>MobNo</u></th>
+                  <th><u>City</u></th>
+                  <th><u>Address</u></th>
+                  <th><u>Email</u></th>
+                  {/* <th><u>Password</u></th> */}
+                  <th><u>Role</u></th>
+                  <th><u>Update</u></th>
+                  <th><u>Delete</u></th>
                </tr>
             </thead>
-            <tbody>
+            <tbody class="font-weight-bold">
                {
                   responseData.map(
                      val => <tr key="{val.uid}"  >
-                        <td>{val.uid}</td>
-                        <td>{val.name}</td>
-                        <td>{val.mobileNo}</td>
-                        <td>{val.city}</td>
-                        <td>{val.address}</td>
-                        <td>{val.email}</td>
-                        <td>{val.role}</td>
-                        <td><Link to="/Admin/update" state={val} class="btn btn-primary btn-md" >Update</Link> </td>
+                        <td class="font-weight-bold">{val.uid}</td>
+                        <td class="font-weight-bold">{val.name}</td>
+                        <td class="font-weight-bold">{val.mobileNo}</td>
+                        <td class="font-weight-bold">{val.city}</td>
+                        <td class="font-weight-bold">{val.address}</td>
+                        <td class="font-weight-bold">{val.email}</td>
+                        {/* <td class="font-weight-bold">{val.password}</td> */}
+                        <td class="font-weight-bold">{val.role}</td>
+                        <td class="font-weight-bold"><Link to="/Admin/update" state={val} class="btn btn-primary btn-md" >Update</Link> </td>
 
 
                         <td><button type="button" id={val.uid} value={val.uid} onClick={userDelete} >X</button> </td>

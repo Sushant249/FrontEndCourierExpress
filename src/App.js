@@ -8,7 +8,7 @@ import ViewUsers from './Admin/ViewUsers';
 import ViewEmployees from './Admin/ViewEmployees';
 import ViewDeliveryboys from './Admin/ViewDeliveryboys';
 import AdminLayout from './Admin/AdminLayout';
-
+import AdminLogin from './AdminLogin';
 import Login from "./Login";
 import EmployeeLayout from './Employee/EmployeeLayout';
 import IncomingCouriers from './Employee/IncomingCouriers';
@@ -34,7 +34,6 @@ import CustomerLogin from './Customer/CustomerLogin';
 import CustomerRegister from "./Customer/CustomerRegister";
 import CustomerHome from './Customer/CustomerHome';
 import EmployeeHome from "./Employee/EmployeeHome";
-import Footer from './HomePage/Footer';
 
 
 
@@ -43,14 +42,15 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<><Home /></>}></Route>
+          <Route path="/" element={<Home />}></Route>
+          <Route path="/AdminLogin" element={<AdminLogin />}></Route>
           <Route path="/Login" element={<Login />}></Route>
           <Route path="/ForgotPassword" element={<ForgotPassword />}></Route>
           <Route path="/CustomerLogin" element={<CustomerLogin />}></Route>
           <Route path="/CustomerRegister" element={<CustomerRegister />}></Route>
 
 
-          <Route path="/Admin" element={<AdminLayout />}>
+          <Route path="/Admin/" element={<AdminLayout />}>
             <Route index element={<ViewUsers />} ></Route>
             <Route path='Register' element={<Register />}></Route>
             <Route path='ViewUsers' element={<ViewUsers />}></Route>
@@ -86,6 +86,9 @@ function App() {
             <Route path="/Customer/ShowData" element={<ShowData />}></Route>
             <Route path="/Customer/CourierTracking" element={<CourierTracking />}></Route>
             <Route path="/Customer/UpdateBookingDetails" element={<UpdateBookingDetails />}></Route>
+            <Route path="/Customer/CustomerFeedback" element={<CustomerFeedback />}></Route>
+
+
           </Route>
 
 

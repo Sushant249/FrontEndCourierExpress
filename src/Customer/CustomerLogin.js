@@ -35,7 +35,7 @@ function CustomerLogin() {
       (response) => {
         console.log(response.data);
         if (response.data.cname != undefined) {
-          sessionStorage.setItem("user", user.email);
+          sessionStorage.setItem("customerEmail", user.email);
           sessionStorage.setItem("cust", response.data.cname);
           navigate("/Customer");
         }
@@ -51,6 +51,7 @@ function CustomerLogin() {
       }
     );
   };
+
 
 
 
@@ -96,6 +97,33 @@ function CustomerLogin() {
       width: '100vw',
       height: '100vh'
     }}>
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+        <div class="container-fluid ms-5">
+          <a class="navbar-brand" href="#">Welcome </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="collapsibleNavbar">
+
+
+            <ul class="navbar-nav">
+
+             
+              <li class="nav-item mt-2 ms-5">
+                <Link class="nav-link btn btn-success" to="/" >Home</Link>
+              </li>
+
+              {/* <li class="nav-item mt-1 ms-5">
+                <Link to="/">
+
+                  <button type="button" class=" btn btn-danger btn-sm" onClick={sessionClose}>Logout</button></Link>
+              </li> */}
+            </ul>
+
+          </div>
+        </div>
+      </nav>
 
 
       <h1 className="display-5">Customer Login</h1>

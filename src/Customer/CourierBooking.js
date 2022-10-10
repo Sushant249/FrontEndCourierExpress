@@ -1,5 +1,5 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert"
 
@@ -15,6 +15,16 @@ const CourierBooking = () => {
     setInputs((values) => ({ ...values, [paramName]: paramValue }));
 
   };
+
+   useEffect(() => {
+  let adminvalidate = sessionStorage.getItem("customerEmail");
+  if(adminvalidate==null)
+  {
+    navigate("/");
+  }
+ 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
   const handleSubmit = (data) => {
 

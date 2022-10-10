@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-
+// import "./Login.css";
 import { Link, useNavigate, useParams } from 'react-router-dom';
-
+// import LoginForm from "./LoginForm";
 import axios from "axios";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -18,50 +18,39 @@ const ForgotPassword = () => {
     //const [user, setUser] = useState("");
     //const [arrow, setArrow] = useState(true);
     // const [comp, setComp] = useState(<LoginForm />)
-    const [loginOrRegister, setLOR] = useState('Register Here');
-    const [role, setRole] = useState("");
-    const [para, setPara] = useState('');
-    const { user } = useParams();
-    const [action, setAction] = useState("Login");
-    const [content, setContent] = useState("New to Our Website please Sign Up to access more Services");
-    const [display, setDisplay] = useState(true);
-    const [otherLogin, setOtherLogin] = useState("Management Login")
+    
     const navigate = useNavigate();
     const [msg, setMsg] = useState('');
     const [displayNewPass, setDisplayNewPass] = useState(false);
     const [opt, setOtp] = useState('');
-
+    
     const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     const [changeMsg, setChangeMsg] = useState("");
 
-    function validateForm() {
-        return email.length > 0 && password.length > 0;
-    }
+   
 
-
-
+  
     const changePassword = (event) => {
         event.preventDefault();
         console.log("in chage pass");
         if ((confirmPass === newPass)) {
             const newPass1 = {
-                "email": email,
-                "password": newPass,
-                "otp": opt
+                "email" : email,
+                "password" : newPass,
+                "otp" :opt
             }
             console.log(newPass);
             axios.post("http://localhost:8080/changePassword", newPass1)
                 .then((response) => {
-                    if (response.status === 200) {
-                        console.log("successfully changed password");
-                        setChangeMsg(<div className="alert alert-success" role="alert">
-                            password changed sucessfully please login with new password
-
-                        </div>);
-
-                        navigate("/");
+                    if(response.status === 200){
+                    console.log("successfully changed password");
+                    setChangeMsg(<div className="alert alert-success" role="alert">
+                    password changed sucessfully please login with new password
+                            
+                </div>);
+                navigate("/");
                     }
-                    else if (response.status === 204) {
+                    else if(response.status === 204){
                         console.log("password change failed")
                         setChangeMsg(<h6 className="text-danger">password changed failed please try again</h6>);
                     }
@@ -69,13 +58,10 @@ const ForgotPassword = () => {
         }
     }
 
-    // useEffect(() => {
-    //     console.log(newPass);
-    // },[newPass, confirmPass])
-
+   
     const authenticateCustomer = (event) => {
         event.preventDefault();
-
+       
 
         console.log("authenticate User");
         const userCredentials = {
@@ -110,29 +96,10 @@ const ForgotPassword = () => {
         checkEmail();
 
 
+       
     }
 
-    const setEmpAdminComp = (e) => {
-        e.preventDefault();
-        if (display) {
-
-            setAction("");
-            setRole("");
-            // setComp(<EmpOrAdmin />);
-            setDisplay(false);
-        }
-        else {
-            setDisplay(true);
-            if (loginOrRegister === "Register Here") {
-                // setComp(<LoginForm />)
-            }
-            else {
-                // setComp(<Register />)
-            }
-            setAction("Login");
-            setRole("Customer");
-        }
-    }
+    
 
 
     return (
@@ -141,7 +108,9 @@ const ForgotPassword = () => {
                 <div className="col-md-3 register-left">
                     <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
                     <h3 className="welcomeColor"><strong>Welcome</strong></h3>
-
+                    
+                    {/* {display ? <button className="btn btn-light"  onClick={(e) => setRegisterForm(e)} name="" value="Login">{loginOrRegister}</button>
+              : <p></p>} */}
                     <br />
                 </div>
 
@@ -151,7 +120,7 @@ const ForgotPassword = () => {
                     </div>
                     <div className="tab-content" id="myTabContent">
                         <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
+                            {/* <h3 class="register-heading text-light">{role} {action}</h3> */}
                         </div>
                         <br />    <br />
                         <div>
@@ -161,7 +130,7 @@ const ForgotPassword = () => {
                                     <span className="text-danger">{msg}</span>
                                     {correctEmail}
                                     <form onSubmit={authenticateCustomer} >
-
+                                      
                                         <div>
                                             <input
                                                 type="email"
@@ -173,7 +142,7 @@ const ForgotPassword = () => {
                                         </div>
                                         <br />
                                         <div className='text-center'>
-
+                                            
                                         </div>
                                         <hr />
                                         <div>{displayNewPass ? <p></p> :
@@ -181,7 +150,7 @@ const ForgotPassword = () => {
                                         }
                                         </div>
                                     </form>
-                                    {changeMsg}
+                                    {changeMsg }
                                     {displayNewPass ?
                                         (<form onSubmit={changePassword}>
                                             <hr />

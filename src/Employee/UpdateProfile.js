@@ -1,5 +1,6 @@
 
 import { useState } from "react";
+import { useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
@@ -12,7 +13,18 @@ const UpdateProfile = () => {
 
   const [inputs, setInputs] = useState(userState.state);
 
+  useEffect(() => {
 
+    let adminvalidate = sessionStorage.getItem("EmployeeUser");
+    if(adminvalidate==null)
+    {
+      navigate("/Login");
+    }
+
+
+ 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+}, []);
 
 
   const handleChange = (evnt) => {
