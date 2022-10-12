@@ -25,14 +25,13 @@ const Register = () => {
   useEffect(() => {
 
     let adminvalidate = sessionStorage.getItem("adminUser");
-    if(adminvalidate==null)
-    {
+    if (adminvalidate == null) {
       navigate("/Login");
     }
 
-   
 
- }, []);
+
+  }, []);
 
   const checkEmail = (data) => {
 
@@ -57,35 +56,31 @@ const Register = () => {
     const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{6,})");
     var pattern = /^[6-9]\d{9}$/gi;
 
-    // if (inputs.name == undefined) {
 
-    //   swal("Error", "Please enter the name", "error");
-    //   return false;
-    // }
     var format = /^[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]*$/;
 
-    if (!isNaN(inputs.name )) {
+    if (!isNaN(inputs.name)) {
       swal("Error", "Please Enter Char Onlyl in Name", "error");
       return false;
-    } else if( inputs.name.match(format) ){
+    } else if (inputs.name.match(format)) {
       swal("Error", "special characters Not allowded  in  Name", "error");
       return false;
-    }else if( /\s/g.test(inputs.name) ){
+    } else if (/\s/g.test(inputs.name)) {
       swal("Error", "White space  Not allowed in Name", "error");
       return false;
-  }
+    }
 
-  if (!isNaN(inputs.city)) {
-    swal("Error", "Please Enter Char Onlyl in City Name", "error");
-    return false;
-  } else if( inputs.city.match(format) ){
-    swal("Error", "special characters Not allowded  in City Name", "error");
-    return false;
-  }else if( /\s/g.test(inputs.city) ){
-    swal("Error", "White space  Not allowed in City Name", "error");
-    return false;
-}
-    
+    if (!isNaN(inputs.city)) {
+      swal("Error", "Please Enter Char Onlyl in City Name", "error");
+      return false;
+    } else if (inputs.city.match(format)) {
+      swal("Error", "special characters Not allowded  in City Name", "error");
+      return false;
+    } else if (/\s/g.test(inputs.city)) {
+      swal("Error", "White space  Not allowed in City Name", "error");
+      return false;
+    }
+
 
 
 
@@ -112,7 +107,7 @@ const Register = () => {
     ) {
       swal("Error", "Please enter valid email", "error");
       return false;
-    } 
+    }
     //else if (inputs.password === "") {
     //   swal("Error", "Please enter password", "error");
     //   return false;
@@ -120,11 +115,11 @@ const Register = () => {
     //   swal("Error", "Password must be atleast 6 character", "error");
     //   return false;
     // } 
-    else if (!strongRegex.test(inputs.password)){
+    else if (!strongRegex.test(inputs.password)) {
       swal("Error", "password should contain : (at least one capital letter, one numeric value and one special character, min length : 6 )", "error");
       return false;
 
-    } 
+    }
     else if (uconpassword !== inputs.password) {
       swal("Error", "Please confirm password", "error");
       return false;
