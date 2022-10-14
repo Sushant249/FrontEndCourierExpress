@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import { responsivePropType } from "react-bootstrap/esm/createUtilityClasses";
 
-const ForgotPassword = () => {
+const UserForgotPassword = () => {
 
     const [email, setEmail] = useState("");
     const [correctEmail, setCorectEmail] = useState('');
@@ -18,39 +18,39 @@ const ForgotPassword = () => {
     //const [user, setUser] = useState("");
     //const [arrow, setArrow] = useState(true);
     // const [comp, setComp] = useState(<LoginForm />)
-    
+
     const navigate = useNavigate();
     const [msg, setMsg] = useState('');
     const [displayNewPass, setDisplayNewPass] = useState(false);
     const [opt, setOtp] = useState('');
-    
+
     const strongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
     const [changeMsg, setChangeMsg] = useState("");
 
-   
 
-  
+
+
     const changePassword = (event) => {
         event.preventDefault();
         console.log("in chage pass");
         if ((confirmPass === newPass)) {
             const newPass1 = {
-                "email" : email,
-                "password" : newPass,
-                "otp" :opt
+                "email": email,
+                "password": newPass,
+                "otp": opt
             }
             console.log(newPass);
-            axios.post("http://localhost:8080/changePassword", newPass1)
+            axios.post("http://localhost:8080/changeUserPassword", newPass1)
                 .then((response) => {
-                    if(response.status === 200){
-                    console.log("successfully changed password");
-                    setChangeMsg(<div className="alert alert-success" role="alert">
-                    password changed sucessfully please login with new password
-                            
-                </div>);
-                navigate("/");
+                    if (response.status === 200) {
+                        console.log("successfully changed password");
+                        setChangeMsg(<div className="alert alert-success" role="alert">
+                            password changed sucessfully please login with new password
+
+                        </div>);
+                        navigate("/");
                     }
-                    else if(response.status === 204){
+                    else if (response.status === 204) {
                         console.log("password change failed")
                         setChangeMsg(<h6 className="text-danger">password changed failed please try again</h6>);
                     }
@@ -58,10 +58,10 @@ const ForgotPassword = () => {
         }
     }
 
-   
+
     const authenticateCustomer = (event) => {
         event.preventDefault();
-       
+
 
         console.log("authenticate User");
         const userCredentials = {
@@ -73,7 +73,7 @@ const ForgotPassword = () => {
 
 
         async function checkEmail() {
-            await axios.get(`http://localhost:8080/checkEmail/${emailId}`)
+            await axios.get(`http://localhost:8080/checkUserEmail/${emailId}`)
                 .then((response) => {
                     console.log(response)
                     if (response.status === 200) {
@@ -96,25 +96,25 @@ const ForgotPassword = () => {
         checkEmail();
 
 
-       
+
     }
 
-    
+
 
 
     return (
         <div className="register">
             <div className="row vh-100">
-                <div className="col-md-3 register-left">
+                <div className="col-md-4 register-left">
                     <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt="" />
-                    <h3 className="welcomeColor"><strong>Welcome</strong></h3>
-                    
+                    <h3 className="welcomeColor"><strong>Welcome to Courier Expresss</strong></h3>
+
                     {/* {display ? <button className="btn btn-light"  onClick={(e) => setRegisterForm(e)} name="" value="Login">{loginOrRegister}</button>
               : <p></p>} */}
                     <br />
                 </div>
 
-                <div className="col-9 register-right backsidecolor" >
+                <div className="col-6 register-right backsidecolor" >
                     <div>
                         {/* {arrow && <BsCaretUpFill />} */}
                     </div>
@@ -124,13 +124,13 @@ const ForgotPassword = () => {
                         </div>
                         <br />    <br />
                         <div>
-                            <div className="col-5 loginForm">
+                            <div className="col-6 loginForm">
                                 <div className="text-center">
                                     <h5 className="text-dark"><strong>Enter Registered Email ID</strong></h5><br />
                                     <span className="text-danger">{msg}</span>
                                     {correctEmail}
                                     <form onSubmit={authenticateCustomer} >
-                                      
+
                                         <div>
                                             <input
                                                 type="email"
@@ -142,7 +142,7 @@ const ForgotPassword = () => {
                                         </div>
                                         <br />
                                         <div className='text-center'>
-                                            
+
                                         </div>
                                         <hr />
                                         <div>{displayNewPass ? <p></p> :
@@ -150,7 +150,7 @@ const ForgotPassword = () => {
                                         }
                                         </div>
                                     </form>
-                                    {changeMsg }
+                                    {changeMsg}
                                     {displayNewPass ?
                                         (<form onSubmit={changePassword}>
                                             <hr />
@@ -200,4 +200,4 @@ const ForgotPassword = () => {
     )
 }
 
-export default ForgotPassword;
+export default UserForgotPassword;

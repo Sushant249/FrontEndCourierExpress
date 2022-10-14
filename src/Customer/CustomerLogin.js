@@ -138,13 +138,14 @@ function CustomerLogin() {
         </div>
 
         <div>
-          <Link to='/ForgotPassword' className="btn btn-link ">Forgot PassWord?</Link>
+          <Link to='/CustForgotPassword' className="btn btn-link ">Forgot PassWord?</Link>
         </div>
 
 
         <div className="col-md-12 text-center ">
+          <p class="mb-0 fs-6 text-black ">Don't have an account?</p>
           <Link to="/CustomerRegister">
-            <p class="mb-0 fs-6 text-black">Don't have an account? Register Here </p></Link>
+            <p className="btn btn-link" >Register Here </p></Link>
 
         </div>
       </form>

@@ -11,17 +11,17 @@ function Login() {
   const navigate = useNavigate();
 
 
-    useEffect(() => {
+  useEffect(() => {
 
-      sessionStorage.setItem("EmployeeUser", "");
-      sessionStorage.setItem("adminUser", "");
-      sessionStorage.setItem("customerEmail", "");
-      sessionStorage.setItem("dboyUser", "");
-      document.title = "Login";
-     }, []);
+    sessionStorage.setItem("EmployeeUser", "");
+    sessionStorage.setItem("adminUser", "");
+    sessionStorage.setItem("customerEmail", "");
+    sessionStorage.setItem("dboyUser", "");
+    document.title = "Login";
+  }, []);
 
-    
- 
+
+
 
   let [uemail, setUemail] = useState("");
   let [upassword, setUpassword] = useState("");
@@ -125,7 +125,7 @@ function Login() {
 
             <ul class="navbar-nav">
 
-             
+
               <li class="nav-item mt-2 ms-5">
                 <Link class="nav-link btn btn-secondary" to="/" >Home</Link>
               </li>
@@ -164,7 +164,7 @@ function Login() {
         </div>
 
         <div>
-          <Link to='/ForgotPassword' className="btn btn-link ">Forgot PassWord?</Link>
+          <Link to='/UserForgotPassword' className="btn btn-link ">Forgot PassWord?</Link>
         </div>
 
 

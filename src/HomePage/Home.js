@@ -73,7 +73,8 @@ const Home = () => {
             <br /><br /> */}
             <VisionMission />
             <br /><br />
-            <Testimonial />
+            {/* <Testimonial /> */}
+
             <br /><br />
             <Footer />
         </div >

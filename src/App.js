@@ -21,7 +21,8 @@ import UpdateProfile from './Employee/UpdateProfile';
 import DboyStatusUpdate from './DeliveryBoy/DboyStatusUpdate';
 import DboyUpdateProfile from './DeliveryBoy/DboyUpdateProfile';
 import DboyProfile from './DeliveryBoy/DboyProfile';
-import ForgotPassword from './ForgotPassword';
+import UserForgotPassword from './UserForgotPassword';
+import CustForgotPassword from './CustForgotPassword';
 
 import CustomerLayout from "./Customer/CustomerLayout";
 import CourierBooking from "./Customer/CourierBooking";
@@ -45,8 +46,9 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/AdminLogin" element={<AdminLogin />}></Route>
           <Route path="/Login" element={<Login />}></Route>
-          <Route path="/ForgotPassword" element={<ForgotPassword />}></Route>
+          <Route path="/UserForgotPassword" element={<UserForgotPassword />}></Route>
           <Route path="/CustomerLogin" element={<CustomerLogin />}></Route>
+          <Route path="/CustForgotPassword" element={<CustForgotPassword />}></Route>
           <Route path="/CustomerRegister" element={<CustomerRegister />}></Route>
 
 
@@ -86,6 +88,7 @@ function App() {
             <Route path="/Customer/ShowData" element={<ShowData />}></Route>
             <Route path="/Customer/CourierTracking" element={<CourierTracking />}></Route>
             <Route path="/Customer/UpdateBookingDetails" element={<UpdateBookingDetails />}></Route>
+
 
 
 
