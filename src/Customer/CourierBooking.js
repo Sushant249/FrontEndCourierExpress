@@ -1,5 +1,5 @@
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert"
 
@@ -16,15 +16,14 @@ const CourierBooking = () => {
 
   };
 
-   useEffect(() => {
-  let adminvalidate = sessionStorage.getItem("customerEmail");
-  if(adminvalidate==null)
-  {
-    navigate("/");
-  }
- 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+  useEffect(() => {
+    let adminvalidate = sessionStorage.getItem("customerEmail");
+    if (adminvalidate == null) {
+      navigate("/");
+    }
+
+
+  }, []);
 
   const handleSubmit = (data) => {
 
