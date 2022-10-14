@@ -78,20 +78,21 @@ function ViewUsers() {
             <tbody class="font-weight-bold">
                {
                   responseData.map(
-                     val => <tr key="{val.uid}"  >
-                        <td class="font-weight-bold">{val.uid}</td>
-                        <td class="font-weight-bold">{val.name}</td>
-                        <td class="font-weight-bold">{val.mobileNo}</td>
-                        <td class="font-weight-bold">{val.city}</td>
-                        <td class="font-weight-bold">{val.address}</td>
-                        <td class="font-weight-bold">{val.email}</td>
-                        {/* <td class="font-weight-bold">{val.password}</td> */}
-                        <td class="font-weight-bold">{val.role}</td>
-                        <td class="font-weight-bold"><Link to="/Admin/update" state={val} class="btn btn-primary btn-md" >Update</Link> </td>
+                     val =>
+                        <tr key="{val.uid}">
+                           <td class="font-weight-bold">{val.uid}</td>
+                           <td class="font-weight-bold">{val.name}</td>
+                           <td class="font-weight-bold">{val.mobileNo}</td>
+                           <td class="font-weight-bold">{val.city}</td>
+                           <td class="font-weight-bold">{val.address}</td>
+                           <td class="font-weight-bold">{val.email}</td>
+
+                           <td class="font-weight-bold">{val.role}</td>
+                           <td class="font-weight-bold"><Link to="/Admin/update" state={val} class="btn btn-primary btn-md" >Update</Link> </td>
 
 
-                        <td><button type="button" id={val.uid} value={val.uid} onClick={userDelete} >X</button> </td>
-                     </tr>
+                           <td><button type="button" id={val.uid} value={val.uid} onClick={userDelete} >X</button> </td>
+                        </tr>
                   )
                }
             </tbody>

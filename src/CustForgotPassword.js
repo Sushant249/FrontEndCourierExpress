@@ -40,7 +40,7 @@ const CustForgotPassword = () => {
                 "otp": opt
             }
             console.log(newPass);
-            axios.post("http://localhost:8080/changeCustPassword", newPass1)
+            axios.post("http://localhost:8080/customer/changeCustPassword", newPass1)
                 .then((response) => {
                     if (response.status === 200) {
                         console.log("successfully changed password");
@@ -73,7 +73,7 @@ const CustForgotPassword = () => {
 
 
         async function checkEmail() {
-            await axios.get(`http://localhost:8080/checkCustEmail/${emailId}`)
+            await axios.get(`http://localhost:8080/customer/checkCustEmail/${emailId}`)
                 .then((response) => {
                     console.log(response)
                     if (response.status === 200) {

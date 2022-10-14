@@ -198,7 +198,7 @@ const CourierBooking = () => {
 
             <div className="row align-items-center py-1">
               <div className="col-md-3 ps-2">
-                <label className="form-label"> Receiver Name: : </label>
+                <label className="form-label"> Receiver Name : </label>
               </div>
               <div className="col-md-6 pe-3">
                 <input
@@ -215,7 +215,7 @@ const CourierBooking = () => {
 
             <div className="row align-items-center py-1">
               <div className="col-md-3 ps-2">
-                <label className="form-label"> Receiver MobileNO : </label>
+                <label className="form-label">Receiver MobileNO : </label>
               </div>
               <div className="col-md-6 pe-3">
                 <input
