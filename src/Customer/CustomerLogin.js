@@ -4,6 +4,9 @@ import { Navigate, redirect, Link, useNavigate } from "react-router-dom";
 // import imgicon from './images/LOGIN-KEY1.png';
 // import "../CSS/login.css";
 import swal from "sweetalert";
+import Nav from 'react-bootstrap/Nav';
+import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 
 
 function CustomerLogin() {
@@ -98,32 +101,20 @@ function CustomerLogin() {
       height: '100vh'
     }}>
 
-<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-        <div class="container-fluid ms-5">
-          <a class="navbar-brand" href="#">Welcome </a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="collapsibleNavbar">
 
+      <Navbar bg="dark" expand="lg">
+        <Container className="text-white">
+          <Navbar.Brand href="/" className="text-white"> Welcome to Courier Express</Navbar.Brand>
+          <Navbar.Toggle aria-controls="basic-navbar-nav" />
+          <Navbar.Collapse id="basic-navbar-nav">
+            <Nav className="me-auto text-white">
+              <Nav.Link className="text-light btn bg-dark" style={{ color: "black" }} href="/" > Home </Nav.Link>
 
-            <ul class="navbar-nav">
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar >
 
-             
-              <li class="nav-item mt-2 ms-5">
-                <Link class="nav-link btn btn-success" to="/" >Home</Link>
-              </li>
-
-              {/* <li class="nav-item mt-1 ms-5">
-                <Link to="/">
-
-                  <button type="button" class=" btn btn-danger btn-sm" onClick={sessionClose}>Logout</button></Link>
-              </li> */}
-            </ul>
-
-          </div>
-        </div>
-      </nav>
 
 
       <h1 className="display-5">Customer Login</h1>
@@ -157,7 +148,7 @@ function CustomerLogin() {
 
         </div>
       </form>
-    </div>
+    </div >
 
 
   );

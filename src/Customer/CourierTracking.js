@@ -38,13 +38,12 @@ const CourierTracking = () => {
 
   useEffect(() => {
     let adminvalidate = sessionStorage.getItem("customerEmail");
-    if(adminvalidate==null)
-    {
+    if (adminvalidate == null) {
       navigate("/");
     }
-   
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+  }, []);
 
 
   return <>
@@ -76,7 +75,7 @@ const CourierTracking = () => {
             </div>
 
             <div className="col-md-9 ms-5">
-              <label className="form-label"> <b>Booking Date :</b> </label>
+              <label className="form-label"> <b>Pickup-Date :</b> </label>
               <input
                 type="date"
                 name="bookingDate"
@@ -101,12 +100,14 @@ const CourierTracking = () => {
         </form >
 
         <div class="col-5 mt-5 " style={{ fontFamily: "Brush Script MT", fontSize: "150%" }}>
-          <div>
-            <p>Receiver Name : {object.receiverName}</p>
-            <p>Receiver Mobile : {object.receiverMobNo}</p>
-            <p>Receiver Address : {object.receiverAddress}</p>
-            <p>Courier Status : {object.randomstatus}</p>
-          </div>
+          {object != null ?
+            <div>
+              <p>Receiver Name : {object.receiverName}</p>
+              <p>Receiver Mobile : {object.receiverMobNo}</p>
+              <p>Receiver Address : {object.receiverAddress}</p>
+              <p>Courier Status : {object.randomstatus}</p>
+            </div> : <p>We are happy to serve you...</p>
+          }
         </div>
 
 

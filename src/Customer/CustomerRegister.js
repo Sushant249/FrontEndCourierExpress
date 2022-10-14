@@ -37,14 +37,13 @@ const CustomerRegister = () => {
   };
 
   useEffect(() => {
-        let adminvalidate = sessionStorage.getItem("customerEmail");
-        if(adminvalidate==null)
-        {
-          navigate("/");
-        }
-       
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, []);
+    let adminvalidate = sessionStorage.getItem("customerEmail");
+    if (adminvalidate == null) {
+      navigate("/");
+    }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
 
 
@@ -216,7 +215,7 @@ const CustomerRegister = () => {
               </div>
               <div className="col-md-6 pe-3">
                 <input
-                  type="text"
+                  type="password"
 
                   id="conpassword"
                   name="conpassword"

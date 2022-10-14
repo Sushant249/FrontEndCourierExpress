@@ -43,13 +43,13 @@ function Footer() {
         <form action=''>
           <MDBRow className='d-flex justify-content-center'>
             <MDBCol size="auto">
-              <p className='pt-2'>
+              <p className='pt-2 mt-2'>
                 <strong>Sign up for our newsletter</strong>
               </p>
             </MDBCol>
 
             <MDBCol md='5' start='12'>
-              <MDBInput contrast type='email' label='Email address' className='mb-4' />
+              <MDBInput contrast type='email' label='Email address' className='mb-4 mt-2' />
             </MDBCol>
 
             <MDBCol size="auto">

@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
+import swal from "sweetalert"
 
 
 const UpdateBookingDetails = () => {
@@ -15,13 +16,12 @@ const UpdateBookingDetails = () => {
 
   useEffect(() => {
     let adminvalidate = sessionStorage.getItem("customerEmail");
-    if(adminvalidate==null)
-    {
+    if (adminvalidate == null) {
       navigate("/");
     }
-   
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-}, []);
+  }, []);
 
 
 
@@ -39,7 +39,12 @@ const UpdateBookingDetails = () => {
       .put(`http://localhost:8080/CustomerCourierUpdate/${inputs.bid}/${inputs.receiverAddress}`)
       .then((response) => {
         alert(response.data);
-        navigate("/Customer/");
+        if (response.data == "OutForDelivery") {
+          swal("Error", "Courier will reach to you soon it has been out for Delivery ", "error");
+        }
+        else {
+          navigate("/Customer/");
+        }
       })
       .catch((error) => {
         alert(error);

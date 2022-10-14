@@ -37,8 +37,11 @@ const CourierBooking = () => {
       .then((response) => {
 
         alert(response.data);
-        console.log(response.data);
-        navigate("/Customer/ShowData")
+        if (response.data == "Sorry service not availabe to this cities") {
+          swal("Error", "Sorry service not availabe to this cities", "error");
+        } else {
+          navigate("/Customer/ShowData")
+        }
       })
       .catch((error) => {
         alert(error);
@@ -113,7 +116,7 @@ const CourierBooking = () => {
 
             <div className="row align-items-center py-1 mt-2">
               <div className="col-md-3 ps-2">
-                <label className="form-label">BookingDate : </label>
+                <label className="form-label">Pickup-Date : </label>
               </div>
               <div className="col-md-6 pe-3">
                 <input
