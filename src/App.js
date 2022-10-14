@@ -27,7 +27,7 @@ import CustomerLayout from "./Customer/CustomerLayout";
 import CourierBooking from "./Customer/CourierBooking";
 import CourierTracking from "./Customer/CourierTracking";
 import UpdateBookingDetails from "./Customer/UpdateBookingDetails";
-import CustomerFeedback from "./Customer/CustomerFeedback";
+
 import ShowData from "./Customer/ShowData";
 import Home from './HomePage/Home';
 import CustomerLogin from './Customer/CustomerLogin';
@@ -86,7 +86,7 @@ function App() {
             <Route path="/Customer/ShowData" element={<ShowData />}></Route>
             <Route path="/Customer/CourierTracking" element={<CourierTracking />}></Route>
             <Route path="/Customer/UpdateBookingDetails" element={<UpdateBookingDetails />}></Route>
-            <Route path="/Customer/CustomerFeedback" element={<CustomerFeedback />}></Route>
+
 
 
           </Route>

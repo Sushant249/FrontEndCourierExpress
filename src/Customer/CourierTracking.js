@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import swal from "sweetalert"
 import { Navigate, redirect, useNavigate } from "react-router-dom";
+import image from "./delivery.jpg"
+
 const CourierTracking = () => {
   const navigate = useNavigate();
 
@@ -50,7 +52,8 @@ const CourierTracking = () => {
     <div>
 
       <div className="vh-100 d-flex " style={{
-        backgroundColor: '#E1E8ED',
+        backgroundImage: `url(${image})`,
+        //backgroundColor: '#E1E8ED',
         width: '100vw',
         height: '100vh',
         backgroundPosition: 'center',

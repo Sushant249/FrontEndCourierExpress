@@ -8,20 +8,21 @@ import AboutUs from "./AboutUs";
 import FlipCards from "./FlipCards";
 import Footer from "./Footer";
 import VisionMission from "./VisionMission";
+import Testimonial from "./Testimonial";
 
 
 
 const Home = () => {
 
 
-useEffect(() => {
+    useEffect(() => {
 
-    sessionStorage.setItem("EmployeeUser", "");
-    sessionStorage.setItem("adminUser", "");
-    sessionStorage.setItem("customerEmail", "");
-    sessionStorage.setItem("dboyUser", "");
+        sessionStorage.setItem("EmployeeUser", "");
+        sessionStorage.setItem("adminUser", "");
+        sessionStorage.setItem("customerEmail", "");
+        sessionStorage.setItem("dboyUser", "");
 
-   }, []);
+    }, []);
 
 
     return (
@@ -71,6 +72,8 @@ useEffect(() => {
             {/* <FlipCards />
             <br /><br /> */}
             <VisionMission />
+            <br /><br />
+            <Testimonial />
             <br /><br />
             <Footer />
         </div >

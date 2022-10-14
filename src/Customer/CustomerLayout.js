@@ -19,14 +19,13 @@ function CustomerLayout() {
   useEffect(() => {
 
     let adminvalidate = sessionStorage.getItem("customerEmail");
-    if(adminvalidate=="")
-    {
+    if (adminvalidate == "") {
       navigate("/CustomerLogin");
     }
 
-    
 
- }, []);
+
+  }, []);
 
   return (
     <>
