@@ -32,8 +32,7 @@ const CourierBooking = () => {
 
     alert(JSON.stringify(data));
 
-    axios
-      .post("http://localhost:8080/addBooking", data)
+    axios.post("http://localhost:8080/addBooking", data)
       .then((response) => {
 
         alert(response.data);
